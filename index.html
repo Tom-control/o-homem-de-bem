@@ -7,10 +7,7 @@
   <meta name="theme-color" content="#345548">
   <title>O Homem de Bem | Autoconhecimento</title>
   <style>
-    * {
-      box-sizing: border-box;
-    }
-
+    * { box-sizing: border-box; }
     body {
       margin: 0;
       font-family: Georgia, "Times New Roman", serif;
@@ -18,80 +15,89 @@
       color: #293d33;
       line-height: 1.7;
     }
-
     header {
       background: #345548;
-      color: #ffffff;
+      color: white;
       text-align: center;
-      padding: 48px 20px;
+      padding: 40px 20px;
     }
-
     header h1 {
       font-size: clamp(2rem, 6vw, 3rem);
       margin: 0 0 8px;
       font-weight: normal;
     }
-
-    header p {
-      margin: 0;
-      font-size: 1.05rem;
-    }
-
     main {
       max-width: 850px;
-      margin: 40px auto;
-      padding: 0 20px;
+      margin: 32px auto;
+      padding: 0 16px;
     }
-
     section {
-      background: #ffffff;
-      padding: 28px;
-      margin-bottom: 24px;
+      background: white;
+      padding: 24px;
+      margin-bottom: 22px;
       border-radius: 12px;
       box-shadow: 0 3px 14px #293d3310;
     }
-
-    h2 {
-      color: #345548;
-      margin-top: 0;
+    h2 { color: #345548; margin-top: 0; }
+    input, button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font: inherit;
+      border-radius: 7px;
     }
-
+    input {
+      border: 1px solid #b9c5bc;
+      background: #fff;
+      color: #293d33;
+    }
+    button {
+      border: 0;
+      background: #345548;
+      color: white;
+      cursor: pointer;
+    }
+    button:hover { background: #263f35; }
+    button.secondary {
+      background: #e8eee8;
+      color: #293d33;
+    }
     .quote {
       border-left: 4px solid #b69a61;
       padding-left: 18px;
       font-style: italic;
     }
-
     .details {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
       gap: 12px;
-      margin-top: 22px;
+      margin-top: 20px;
     }
-
     .detail {
       background: #f1f3ed;
       border-radius: 8px;
-      padding: 16px;
+      padding: 14px;
       text-align: center;
     }
-
     .detail strong {
       display: block;
       font-size: 1.8rem;
       color: #345548;
     }
-
-    .notice {
-      font-size: 0.95rem;
-      color: #58675e;
+    .notice { color: #58675e; font-size: .95rem; }
+    .status { padding: 10px; border-radius: 7px; background: #f1f3ed; }
+    .group {
+      border-top: 1px solid #e1e6df;
+      padding: 12px 0;
     }
-
+    .group h3 { margin-bottom: 4px; color: #345548; }
+    [hidden] { display: none !important; }
     footer {
       text-align: center;
-      padding: 28px 20px;
+      padding: 24px 16px;
       color: #58675e;
-      font-size: 0.9rem;
+      font-size: .9rem;
     }
   </style>
 </head>
@@ -104,68 +110,254 @@
   <main>
     <section>
       <h2>Bem-vindo à sua jornada</h2>
-      <p>
-        Este projeto é um convite à reflexão sobre nossas atitudes,
-        sentimentos e escolhas cotidianas, inspirando-nos a cultivar
-        virtudes e a buscar o aperfeiçoamento moral.
-      </p>
-      <p>
-        Cada dia oferece uma nova oportunidade de aprender,
-        reconhecer nossos desafios e praticar o bem.
-      </p>
+      <p>Este projeto é um convite à reflexão sobre nossas atitudes, sentimentos e escolhas cotidianas, inspirando-nos a cultivar virtudes e a buscar o aperfeiçoamento moral.</p>
+      <p>Cada dia oferece uma nova oportunidade de aprender, reconhecer nossos desafios e praticar o bem.</p>
     </section>
 
     <section>
       <h2>O fundamento do projeto</h2>
-      <p class="quote">
-        Inspirado em O Evangelho Segundo o Espiritismo,
-        de Allan Kardec, capítulo XVII, item 3:
-        “O homem de bem”.
-      </p>
-      <p>
-        A proposta é transformar a reflexão em prática diária,
-        com honestidade, paciência, humildade e perseverança.
-      </p>
+      <p class="quote">Inspirado em <em>O Evangelho Segundo o Espiritismo</em>, de Allan Kardec, capítulo XVII, item 3: “O homem de bem”.</p>
+      <p>A proposta é transformar a reflexão em prática diária, com honestidade, paciência, humildade e perseverança.</p>
     </section>
 
     <section>
       <h2>Um caminho de evolução contínua</h2>
-      <p>
-        O projeto reúne características para reflexão pessoal,
-        organizadas em grupos temáticos de reforma íntima.
-      </p>
+      <p>As características estão organizadas em grupos temáticos de reforma íntima.</p>
       <div class="details">
-        <div class="detail">
-          <strong>88</strong>
-          Características
-        </div>
-        <div class="detail">
-          <strong>14</strong>
-          Grupos de reflexão
-        </div>
-        <div class="detail">
-          <strong>0–10</strong>
-          Escala de autoavaliação
-        </div>
+        <div class="detail"><strong>88</strong>Características</div>
+        <div class="detail"><strong>14</strong>Grupos de reflexão</div>
+        <div class="detail"><strong>0–10</strong>Escala de autoavaliação</div>
       </div>
+    </section>
+
+    <section id="account">
+      <h2>Acesso à sua área pessoal</h2>
+      <p>Crie sua conta ou entre para consultar os grupos de reflexão.</p>
+
+      <form id="account-form">
+        <label for="email">Seu e-mail</label>
+        <input id="email" type="email" autocomplete="email" required>
+
+        <label for="password">Senha (mínimo de 6 caracteres)</label>
+        <input id="password" type="password" autocomplete="current-password" minlength="6" required>
+
+        <button type="submit" id="login-button">Entrar</button>
+        <button type="button" class="secondary" id="signup-button">Criar uma conta</button>
+      </form>
+
+      <p id="status" class="status" role="status" aria-live="polite">Aguardando acesso.</p>
+      <button type="button" class="secondary" id="logout-button" hidden>Sair da conta</button>
+    </section>
+
+    <section id="data-section" hidden>
+      <h2>Grupos de reflexão</h2>
+      <p>Esta área apresenta os dados cadastrados no banco de dados.</p>
+      <div id="groups-list"></div>
     </section>
 
     <section>
       <h2>Nosso compromisso</h2>
-      <p>
-        A autoavaliação não é uma competição nem um julgamento.
-        É uma oportunidade de observar a nós mesmos com sinceridade,
-        acolher nossas dificuldades e reconhecer nossos progressos.
-      </p>
-      <p class="notice">
-        Esta é a página inicial de apresentação. A área de avaliação
-        pessoal será desenvolvida nas próximas etapas.
-      </p>
+      <p>A autoavaliação não é uma competição nem um julgamento. É uma oportunidade de observar a nós mesmos com sinceridade, acolher nossas dificuldades e reconhecer nossos progressos.</p>
+      <p class="notice">A avaliação diária e o registro pessoal serão desenvolvidos nas próximas etapas.</p>
     </section>
   </main>
 
-  <footer>
-    O Homem de Bem · Autoconhecimento, reflexão e prática do bem
-  </footer>
+  <footer>O Homem de Bem · Autoconhecimento, reflexão e prática do bem</footer>
+
+  <script type="module">
+    import { createClient } from
+      'https://esm.sh/@supabase/supabase-js@2';
+
+    const SUPABASE_URL = 'https://sqcgjjmzoeosvuxebtyv.supabase.co';
+    const SUPABASE_PUBLISHABLE_KEY = 'sb_publishable_0lES8gihaNO_J9FNiTAHdg_CK-F9iU9';
+
+    const statusBox = document.getElementById('status');
+    const accountForm = document.getElementById('account-form');
+    const loginButton = document.getElementById('login-button');
+    const signupButton = document.getElementById('signup-button');
+    const logoutButton = document.getElementById('logout-button');
+    const dataSection = document.getElementById('data-section');
+    const groupsList = document.getElementById('groups-list');
+
+    function showStatus(message) {
+      statusBox.textContent = message;
+    }
+
+    if (SUPABASE_PUBLISHABLE_KEY ===
+        'COLE_AQUI_SUA_PUBLISHABLE_KEY') {
+      showStatus('A conexão ainda precisa ser configurada.');
+    } else {
+      startApp();
+    }
+
+    async function startApp() {
+      const supabase = createClient(
+        SUPABASE_URL,
+        SUPABASE_PUBLISHABLE_KEY
+      );
+
+      async function loadGroups() {
+        showStatus('Carregando grupos e características...');
+        groupsList.replaceChildren();
+        dataSection.hidden = false;
+
+        const { data: groups, error: groupsError } =
+          await supabase
+            .from('groups')
+            .select('id, name, description')
+            .order('id');
+
+        if (groupsError) {
+          showStatus('Não foi possível carregar os grupos. ' +
+            groupsError.message);
+          return;
+        }
+
+        const { data: characteristics, error: traitsError } =
+          await supabase
+            .from('characteristics')
+            .select('id, group_id, name, description')
+            .order('id');
+
+        if (traitsError) {
+          showStatus('Os grupos foram encontrados, mas não foi ' +
+            'possível carregar as características. ' +
+            traitsError.message);
+          return;
+        }
+
+        for (const group of groups) {
+          const container = document.createElement('div');
+          container.className = 'group';
+
+          const heading = document.createElement('h3');
+          heading.textContent = group.name || 'Grupo';
+          container.appendChild(heading);
+
+          if (group.description) {
+            const description = document.createElement('p');
+            description.textContent = group.description;
+            container.appendChild(description);
+          }
+
+          const list = document.createElement('ul');
+          const items = characteristics.filter(
+            item => String(item.group_id) === String(group.id)
+          );
+
+          for (const item of items) {
+            const li = document.createElement('li');
+            li.textContent = item.name;
+            if (item.description) {
+              li.title = item.description;
+            }
+            list.appendChild(li);
+          }
+
+          container.appendChild(list);
+          groupsList.appendChild(container);
+        }
+
+        showStatus(
+          'Conexão realizada. ' + groups.length + ' grupos e ' +
+          characteristics.length + ' características carregados.'
+        );
+      }
+
+      async function updateSession(session) {
+        if (session) {
+          accountForm.hidden = true;
+          logoutButton.hidden = false;
+          await loadGroups();
+        } else {
+          accountForm.hidden = false;
+          logoutButton.hidden = true;
+          dataSection.hidden = true;
+          groupsList.replaceChildren();
+          showStatus('Entre na sua conta para consultar os dados.');
+        }
+      }
+
+      accountForm.addEventListener('submit', async event => {
+        event.preventDefault();
+        loginButton.disabled = true;
+        signupButton.disabled = true;
+        showStatus('Verificando seus dados de acesso...');
+
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email,
+          password
+        });
+
+        loginButton.disabled = false;
+        signupButton.disabled = false;
+
+        if (error) {
+          showStatus('Não foi possível entrar. Confira o e-mail e a ' +
+            'senha. Se ainda não tem conta, use “Criar uma conta”.');
+          return;
+        }
+
+        await updateSession(data.session);
+      });
+
+      signupButton.addEventListener('click', async () => {
+        const email = document.getElementById('email').value.trim();
+        const password = document.getElementById('password').value;
+
+        if (!email || password.length < 6) {
+          showStatus('Informe um e-mail válido e uma senha com pelo ' +
+            'menos 6 caracteres.');
+          return;
+        }
+
+        loginButton.disabled = true;
+        signupButton.disabled = true;
+        showStatus('Criando sua conta...');
+
+        const { data, error } = await supabase.auth.signUp({
+          email,
+          password
+        });
+
+        loginButton.disabled = false;
+        signupButton.disabled = false;
+
+        if (error) {
+          showStatus('Não foi possível criar a conta. Verifique os ' +
+            'dados ou consulte as configurações de autenticação.');
+          return;
+        }
+
+        if (data.session) {
+          await updateSession(data.session);
+        } else {
+          showStatus('Cadastro iniciado. Confira seu e-mail para ' +
+            'confirmar a conta e depois entre por esta página.');
+        }
+      });
+
+      logoutButton.addEventListener('click', async () => {
+        const { error } = await supabase.auth.signOut();
+        if (error) {
+          showStatus('Não foi possível sair da conta. Tente novamente.');
+          return;
+        }
+        await updateSession(null);
+      });
+
+      const { data: { session } } =
+        await supabase.auth.getSession();
+
+      await updateSession(session);
+
+      supabase.auth.onAuthStateChange((_event, session) => {
+        updateSession(session);
+      });
+    }
+  </script>
 </body>
 </html>

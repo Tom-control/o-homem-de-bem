@@ -196,6 +196,89 @@
         SUPABASE_PUBLISHABLE_KEY
       );
 
+            const recoveryButton = document.createElement('button');
+      recoveryButton.type = 'button';
+      recoveryButton.textContent = 'Esqueci minha senha';
+      recoveryButton.style.marginTop = '10px';
+      accountForm.insertAdjacentElement('afterend', recoveryButton);
+
+      recoveryButton.addEventListener('click', async () => {
+        const email = document.getElementById('email').value.trim();
+
+        if (!email) {
+          showStatus('Digite seu e-mail antes de solicitar a recuperação.');
+          return;
+        }
+
+        recoveryButton.disabled = true;
+
+        const { error } = await supabase.auth.resetPasswordForEmail(email, {
+          redirectTo: window.location.href.split('#')[0]
+        });
+
+        recoveryButton.disabled = false;
+
+        if (error) {
+          showStatus('Não foi possível enviar o e-mail de recuperação. Tente novamente.');
+          return;
+        }
+
+        showStatus('Enviamos um link de recuperação para seu e-mail. Abra-o para definir uma nova senha.');
+      });
+
+      supabase.auth.onAuthStateChange(async (event) => {
+        if (event !== 'PASSWORD_RECOVERY') return;
+
+        let passwordForm = document.getElementById('new-password-form');
+
+        if (passwordForm) {
+          passwordForm.hidden = false;
+          return;
+        }
+
+        passwordForm = document.createElement('form');
+        passwordForm.id = 'new-password-form';
+        passwordForm.style.marginTop = '20px';
+
+        const title = document.createElement('p');
+        title.textContent = 'Defina sua nova senha';
+
+        const passwordInput = document.createElement('input');
+        passwordInput.type = 'password';
+        passwordInput.minLength = 6;
+        passwordInput.required = true;
+        passwordInput.autocomplete = 'new-password';
+        passwordInput.placeholder = 'Nova senha (mínimo de 6 caracteres)';
+        passwordInput.style.display = 'block';
+        passwordInput.style.width = '100%';
+        passwordInput.style.marginBottom = '10px';
+
+        const saveButton = document.createElement('button');
+        saveButton.type = 'submit';
+        saveButton.textContent = 'Salvar nova senha';
+
+        passwordForm.append(title, passwordInput, saveButton);
+        accountForm.insertAdjacentElement('afterend', passwordForm);
+
+        passwordForm.addEventListener('submit', async (submitEvent) => {
+          submitEvent.preventDefault();
+          saveButton.disabled = true;
+
+          const { error } = await supabase.auth.updateUser({
+            password: passwordInput.value
+          });
+
+          saveButton.disabled = false;
+
+          if (error) {
+            showStatus('Não foi possível atualizar a senha. Confira os requisitos e tente novamente.');
+            return;
+          }
+
+          passwordForm.hidden = true;
+          showStatus('Nova senha salva com sucesso! Você já pode entrar com ela.');
+        });
+      });
       async function loadGroups() {
         showStatus('Carregando grupos e características...');
         groupsList.replaceChildren();
